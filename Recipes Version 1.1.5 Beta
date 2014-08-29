@@ -1,0 +1,2406 @@
+package me.Matt.Recipes;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Logger;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+
+public class Main extends JavaPlugin implements Listener
+{
+	public static Main plugin;
+	public final Logger logger = Logger.getLogger("Minecraft");
+	int counter = 0;
+
+	public void onDisable() {
+		PluginDescriptionFile pdfFile = this.getDescription();
+		this.logger.info(pdfFile.getName() + " Has been disabled!");
+		getServer().clearRecipes();
+	}
+
+	public void onEnable() {
+		FileConfiguration config = getConfig();
+		
+		if (config.getBoolean("Disc 13") == true)
+		{
+			getServer().getPluginManager().registerEvents(this, this);
+			ShapedRecipe disk = new ShapedRecipe(new ItemStack(
+				Material.GOLD_RECORD, 1));
+			disk.shape(new String[] { "$$$", "$*$", "$$$" })
+			.setIngredient('$', Material.COAL)
+			.setIngredient('*', Material.GOLD_INGOT);
+			getServer().addRecipe(disk);
+		}
+		
+		if (config.getBoolean("Disc cat") == true);
+		{
+			ShapedRecipe disk2 = new ShapedRecipe(new ItemStack(
+					Material.GREEN_RECORD, 1));
+			disk2.shape(new String[] { "$$$", "$1$", "$$$" })
+					.setIngredient('$', Material.COAL)
+					.setIngredient('1', Material.SUGAR_CANE);
+			getServer().addRecipe(disk2);
+		}
+		if (config.getBoolean("Disc blocks") == true);
+		{
+			ShapedRecipe disk3 = new ShapedRecipe(new ItemStack(Material.RECORD_3,
+					1));
+			disk3.shape(new String[] { "$$$", "$2$", "$$$" })
+					.setIngredient('$', Material.COAL)
+					.setIngredient('2', Material.BRICK);
+			getServer().addRecipe(disk3);
+		}
+		if (config.getBoolean("Disc chirp") == true);
+		{
+			ShapedRecipe disk4 = new ShapedRecipe(new ItemStack(Material.RECORD_4,
+					1));
+			disk4.shape(new String[] { "$$$", "$3$", "$$$" })
+					.setIngredient('$', Material.COAL)
+					.setIngredient('3', Material.REDSTONE);
+			getServer().addRecipe(disk4);
+		}
+		if (config.getBoolean("Disc far") == true);
+		{
+		ShapedRecipe disk5 = new ShapedRecipe(new ItemStack(Material.RECORD_5,
+				1));
+		disk5.shape(new String[] { "$$$", "$4$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('4', Material.CACTUS);
+		getServer().addRecipe(disk5);
+		}
+		if (config.getBoolean("Disc mall") == true);
+		{
+		ShapedRecipe disk6 = new ShapedRecipe(new ItemStack(Material.RECORD_6,
+				1));
+		disk6.shape(new String[] { "$$$", "$5$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('5', Material.LAPIS_BLOCK);
+		getServer().addRecipe(disk6);
+		}
+		if (config.getBoolean("Disc mellohi") == true);
+		{
+		ShapedRecipe disk7 = new ShapedRecipe(new ItemStack(Material.RECORD_7,
+				1));
+		disk7.shape(new String[] { "$$$", "$6$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('6', Material.BED);
+		getServer().addRecipe(disk7);
+		}
+		if (config.getBoolean("Disc stal") == true);
+		{
+		ShapedRecipe disk8 = new ShapedRecipe(new ItemStack(Material.RECORD_8,
+				1));
+		disk8.shape(new String[] { "$$$", "$7$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('7', Material.FLINT);
+		getServer().addRecipe(disk8);
+		}
+		if (config.getBoolean("Disc strad") == true);
+		{
+		ShapedRecipe disk9 = new ShapedRecipe(new ItemStack(Material.RECORD_9,
+				1));
+		disk9.shape(new String[] { "$$$", "$8$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('8', Material.IRON_INGOT);
+		getServer().addRecipe(disk9);
+		}
+		if (config.getBoolean("Disc ward") == true);
+		{
+		ShapedRecipe disk10 = new ShapedRecipe(new ItemStack(Material.RECORD_10, 1));
+		disk10.shape(new String[] { "$$$", "$9$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('9', Material.MOSSY_COBBLESTONE);
+		getServer().addRecipe(disk10);
+		}
+		if (config.getBoolean("Disc 11") == true);
+		{
+		ShapedRecipe disk11 = new ShapedRecipe(new ItemStack(Material.RECORD_11, 1));
+		disk11.shape(new String[] { "$$$", "$!$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('!', Material.COAL_BLOCK);
+		getServer().addRecipe(disk11);
+		}
+		if (config.getBoolean("Disc wait") == true);
+		{
+		ShapedRecipe disk12 = new ShapedRecipe(new ItemStack(Material.RECORD_12, 1));
+		disk12.shape(new String[] { "$$$", "$@$", "$$$" })
+				.setIngredient('$', Material.COAL)
+				.setIngredient('@', Material.ICE);
+		getServer().addRecipe(disk12);
+		}
+		if (config.getBoolean("Gold Horse Armor") == true);
+		{
+		ShapedRecipe Ghorse = new ShapedRecipe(new ItemStack(Material.GOLD_BARDING, 1));
+		Ghorse.shape(new String[] { " ##", "##&", "#&&" })
+				.setIngredient('#', Material.GOLD_INGOT)
+				.setIngredient('&', Material.LEATHER);
+		getServer().addRecipe(Ghorse);
+		}
+		if (config.getBoolean("Iron Horse Armor") == true);
+		{
+		ShapedRecipe Ihorse = new ShapedRecipe(new ItemStack(Material.IRON_BARDING, 1));
+		Ihorse.shape(new String[] { " ##", "##&", "#&&" })
+				.setIngredient('#', Material.IRON_INGOT)
+				.setIngredient('&', Material.LEATHER);
+		getServer().addRecipe(Ihorse);
+		}
+		if (config.getBoolean("Diamond Horse Armor") == true);
+		{
+		ShapedRecipe Dhorse = new ShapedRecipe(new ItemStack(Material.DIAMOND_BARDING, 1));
+		Dhorse.shape(new String[] { " ##", "##&", "#&&" })
+				.setIngredient('#', Material.DIAMOND)
+				.setIngredient('&', Material.LEATHER);
+		getServer().addRecipe(Dhorse);
+		}
+		if (config.getBoolean("Disc chirp") == true);
+		ShapedRecipe Saddle = new ShapedRecipe(new ItemStack(Material.SADDLE, 1));
+		Saddle.shape(new String[] { "&&&", "&&&", "&&&" })
+				.setIngredient('&', Material.LEATHER);
+		getServer().addRecipe(Saddle);
+		if (config.getBoolean("Disc chirp") == true);
+		ShapedRecipe Chainhelm = new ShapedRecipe(new ItemStack(Material.CHAINMAIL_HELMET, 1));
+		Chainhelm.shape(new String[] { "&&&", "& &", "   " })
+				.setIngredient('&',
+				Material.STONE);
+		getServer().addRecipe(Chainhelm);
+		if (config.getBoolean("Disc chirp") == true);
+		ShapedRecipe Chainchest = new ShapedRecipe(new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1));
+		Chainchest.shape(new String[] { "& &", "&&&", "&&&" })
+				.setIngredient('&',
+				Material.STONE);
+		getServer().addRecipe(Chainchest);
+		if (config.getBoolean("Disc chirp") == true);
+		ShapedRecipe Chainlegg = new ShapedRecipe(new ItemStack(Material.CHAINMAIL_LEGGINGS, 1));
+		Chainlegg.shape(new String[] { "&&&", "& &", "& &" })
+				.setIngredient('&',
+				Material.STONE);
+		getServer().addRecipe(Chainlegg);
+		if (config.getBoolean("Disc chirp") == true);
+		ShapedRecipe Chainboot = new ShapedRecipe(new ItemStack(Material.CHAINMAIL_BOOTS, 1));
+		Chainboot.shape(new String[] { "   ", "& &", "& &" })
+				.setIngredient('&',
+				Material.STONE);
+		getServer().addRecipe(Chainboot);
+		if (config.getBoolean("Disc chirp") == true);
+		ShapedRecipe Chainboot2 = new ShapedRecipe(new ItemStack(Material.CHAINMAIL_BOOTS, 1));
+		Chainboot2.shape(new String[] { "& &", "& &", "   " })
+				.setIngredient('&',
+				Material.STONE);
+		getServer().addRecipe(Chainboot2);
+		if (config.getBoolean("Disc chirp") == true);
+	
+		PluginDescriptionFile pdfFile = this.getDescription();
+		this.logger.info(pdfFile.getName() + " Has been Enabled!");
+
+			if(!(new File(getDataFolder(), "RESET.FILE")).exists()){
+				try
+				{
+					getConfig().set("Disc 13", true);
+					getConfig().set("Disc cat", true);
+					getConfig().set("Disc blocks", true);
+					getConfig().set("Disc chirp", true);
+					getConfig().set("Disc far", true);
+					getConfig().set("Disc mall", true);
+					getConfig().set("Disc mellohi", true);
+					getConfig().set("Disc stal", true);
+					getConfig().set("Disc strad", true);
+					getConfig().set("Disc ward", true);
+					getConfig().set("Disc 11", true);
+					getConfig().set("Disc wait", true);
+					getConfig().set("Gold Horse Armor", true);
+					getConfig().set("Iron Horse Armor", true);
+					getConfig().set("Diamond Horse Armor", true);
+					getConfig().set("Saddle", true);
+					getConfig().set("Chain Helmet", true);
+					getConfig().set("Chain Chestplate", true);
+					getConfig().set("Chain Leggings", true);
+					getConfig().set("Chain Boots", true);
+					
+					getLogger().info("Creating New Config");
+					new File(getDataFolder(), "RESET.FILE").createNewFile();
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				saveConfig();
+			}
+	}
+
+	private void openGUI(Player commander) {
+		Inventory inv = Bukkit.createInventory(null, 27, ChatColor.DARK_BLUE
+				+ "Recipes list" + " - " + "Click for info!");
+		int recipeIndex = 0;
+		
+		if (getConfig().getBoolean("Disc 13")== true){
+			ItemStack Disc13 = new ItemStack(Material.GOLD_RECORD);
+			ItemMeta Disc13Meta = Disc13.getItemMeta();
+			Disc13Meta.setDisplayName(ChatColor.GOLD + "/rec 13");
+			Disc13.setItemMeta(Disc13Meta);
+			inv.setItem(recipeIndex++, Disc13);
+		}
+		if (getConfig().getBoolean("Disc cat")== true){
+			ItemStack Disccat = new ItemStack(Material.GREEN_RECORD);
+			ItemMeta DisccatMeta = Disccat.getItemMeta();
+			DisccatMeta.setDisplayName(ChatColor.GOLD + "/rec cat");
+			Disccat.setItemMeta(DisccatMeta);
+			inv.setItem(recipeIndex++, Disccat);
+		}
+		if (getConfig().getBoolean("Disc blocks")== true){
+			ItemStack DiscBlocks = new ItemStack(Material.RECORD_3);
+			ItemMeta DiscBlocksMeta = DiscBlocks.getItemMeta();
+			DiscBlocksMeta.setDisplayName(ChatColor.GOLD + "/rec blocks");
+			DiscBlocks.setItemMeta(DiscBlocksMeta);
+			inv.setItem(recipeIndex++, DiscBlocks);
+		}
+		if (getConfig().getBoolean("Disc chirp")== true){
+			ItemStack DiscChirp = new ItemStack(Material.RECORD_4);
+			ItemMeta DiscChirpMeta = DiscChirp.getItemMeta();
+			DiscChirpMeta.setDisplayName(ChatColor.GOLD + "/rec chirp");
+			DiscChirp.setItemMeta(DiscChirpMeta);
+			inv.setItem(recipeIndex++, DiscChirp);
+		}
+		if (getConfig().getBoolean("Disc far")== true){
+			ItemStack Discfar = new ItemStack(Material.RECORD_5);
+			ItemMeta DiscfarMeta = Discfar.getItemMeta();
+			DiscfarMeta.setDisplayName(ChatColor.GOLD + "/rec far");
+			Discfar.setItemMeta(DiscfarMeta);
+			inv.setItem(recipeIndex++, Discfar);
+		}
+		if (getConfig().getBoolean("Disc mall")== true){
+			ItemStack Discmall = new ItemStack(Material.RECORD_6);
+			ItemMeta DiscmallMeta = Discmall.getItemMeta();
+			DiscmallMeta.setDisplayName(ChatColor.GOLD + "/rec mall");
+			Discmall.setItemMeta(DiscmallMeta);
+			inv.setItem(recipeIndex++, Discmall);
+		}
+		if (getConfig().getBoolean("Disc 11")== true){
+			ItemStack Discmellohi = new ItemStack(Material.RECORD_7);
+			ItemMeta DiscmellohiMeta = Discmellohi.getItemMeta();
+			DiscmellohiMeta.setDisplayName(ChatColor.GOLD + "/rec mellohi");
+			Discmellohi.setItemMeta(DiscmellohiMeta);
+			inv.setItem(recipeIndex++, Discmellohi);
+		}
+		if (getConfig().getBoolean("Disc ward")== true){
+			ItemStack Disc11 = new ItemStack(Material.RECORD_11);
+			ItemMeta Disc11Meta = Disc11.getItemMeta();
+			Disc11Meta.setDisplayName(ChatColor.GOLD + "/rec 11");
+			Disc11.setItemMeta(Disc11Meta);
+			inv.setItem(recipeIndex++, Disc11);
+		}
+		if (getConfig().getBoolean("Disc mellohi")== true){
+			ItemStack Discstal = new ItemStack(Material.RECORD_8);
+			ItemMeta DiscstalMeta = Discstal.getItemMeta();
+			DiscstalMeta.setDisplayName(ChatColor.GOLD + "/rec stal");
+			Discstal.setItemMeta(DiscstalMeta);
+			inv.setItem(recipeIndex++, Discstal);
+		}
+		if (getConfig().getBoolean("Disc stal")== true){
+			ItemStack Discstrad = new ItemStack(Material.RECORD_9);
+			ItemMeta DiscstradpMeta = Discstrad.getItemMeta();
+			DiscstradpMeta.setDisplayName(ChatColor.GOLD + "/rec strad");
+			Discstrad.setItemMeta(DiscstradpMeta);
+			inv.setItem(recipeIndex++, Discstrad);
+		}
+		if (getConfig().getBoolean("Disc strad")== true){
+			ItemStack Discward = new ItemStack(Material.RECORD_10);
+			ItemMeta DiscwardMeta = Discward.getItemMeta();
+			DiscwardMeta.setDisplayName(ChatColor.GOLD + "/rec ward");
+			Discward.setItemMeta(DiscwardMeta);
+			inv.setItem(recipeIndex++, Discward);
+		}
+		if (getConfig().getBoolean("Disc wait")== true){
+			ItemStack Discwait = new ItemStack(Material.RECORD_12);
+			ItemMeta DiscwaitMeta = Discwait.getItemMeta();
+			DiscwaitMeta.setDisplayName(ChatColor.GOLD + "/rec wait");
+			Discwait.setItemMeta(DiscwaitMeta);
+			inv.setItem(recipeIndex++, Discwait);
+		}
+		if (getConfig().getBoolean("Gold Horse Armor")== true){
+			ItemStack Ghorse = new ItemStack(Material.GOLD_BARDING);
+			ItemMeta GhorseMeta = Ghorse.getItemMeta();
+			GhorseMeta.setDisplayName(ChatColor.GOLD + "/rec goldhorse");
+			Ghorse.setItemMeta(GhorseMeta);
+			inv.setItem(recipeIndex++, Ghorse);
+		}
+		if (getConfig().getBoolean("Iron Horse Armor")== true){
+			ItemStack ihorse = new ItemStack(Material.IRON_BARDING);
+			ItemMeta ihorseMeta = ihorse.getItemMeta();
+			ihorseMeta.setDisplayName(ChatColor.GOLD + "/rec ironhorse");
+			ihorse.setItemMeta(ihorseMeta);
+			inv.setItem(recipeIndex++, ihorse);
+		}
+		if (getConfig().getBoolean("Diamond Horse Armor")== true){
+			ItemStack Dhorse = new ItemStack(Material.DIAMOND_BARDING);
+			ItemMeta DhorseMeta = Dhorse.getItemMeta();
+			DhorseMeta.setDisplayName(ChatColor.GOLD + "/rec diamondhorse");
+			Dhorse.setItemMeta(DhorseMeta);
+			inv.setItem(recipeIndex++, Dhorse);
+		}
+		if (getConfig().getBoolean("Saddle")== true){
+			ItemStack Saddle = new ItemStack(Material.SADDLE);
+			ItemMeta SaddleMeta = Saddle.getItemMeta();
+			SaddleMeta.setDisplayName(ChatColor.GOLD + "/rec saddle");
+			Saddle.setItemMeta(SaddleMeta);
+			inv.setItem(recipeIndex++, Saddle);
+		}
+		if (getConfig().getBoolean("Chain Helmet")== true){
+			ItemStack chainhelmet = new ItemStack(Material.CHAINMAIL_HELMET);
+			ItemMeta chainhelmetMeta = chainhelmet.getItemMeta();
+			chainhelmetMeta.setDisplayName(ChatColor.GOLD + "/rec chainhelmet");
+			chainhelmet.setItemMeta(chainhelmetMeta);
+			inv.setItem(recipeIndex++, chainhelmet);
+		}
+		if (getConfig().getBoolean("Chain Leggings")== true){
+			ItemStack Saddle = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+			ItemMeta SaddleMeta = Saddle.getItemMeta();
+			SaddleMeta.setDisplayName(ChatColor.GOLD + "/rec chainleggings");
+			Saddle.setItemMeta(SaddleMeta);
+			inv.setItem(recipeIndex++, Saddle);
+		}
+		if (getConfig().getBoolean("Chain Chestplate")== true){
+			ItemStack chainchest = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+			ItemMeta chainchestMeta = chainchest.getItemMeta();
+			chainchestMeta.setDisplayName(ChatColor.GOLD + "/rec chainchest");
+			chainchest.setItemMeta(chainchestMeta);
+			inv.setItem(recipeIndex++, chainchest);
+		}
+		
+		if (getConfig().getBoolean("Chain Boots")== true){
+			ItemStack chainboots = new ItemStack(Material.CHAINMAIL_BOOTS);
+			ItemMeta chainbootsMeta = chainboots.getItemMeta();
+			chainbootsMeta.setDisplayName(ChatColor.GOLD + "/rec chainboots");
+			chainboots.setItemMeta(chainbootsMeta);
+			inv.setItem(recipeIndex++, chainboots);
+		}
+		
+		commander.openInventory(inv);
+	}
+
+	@EventHandler
+	public void onInventoryClick(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Recipes list - Click for info!"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+			case GOLD_RECORD:
+				openGui1(((Player) commander).getPlayer());
+
+				break;
+								
+			case GREEN_RECORD:
+				openGui2(((Player) commander).getPlayer());
+				break;
+			case RECORD_3:
+				openGui3(((Player) commander).getPlayer());
+				break;
+				
+			case RECORD_4:
+				openGui4(((Player) commander).getPlayer());
+				break;
+			case RECORD_5:
+				openGui5(((Player) commander).getPlayer());
+				break;
+			case RECORD_6:
+				openGui6(((Player) commander).getPlayer());
+				break;
+			case RECORD_7:
+				openGui7(((Player) commander).getPlayer());
+				break;
+			case RECORD_8:
+				openGui8(((Player) commander).getPlayer());
+				break;
+			case RECORD_9:
+				openGui9(((Player) commander).getPlayer());
+				break;
+			case RECORD_10:
+				openGui10(((Player) commander).getPlayer());
+				break;
+			case RECORD_11:
+				openGui11(((Player) commander).getPlayer());
+				break;
+			case RECORD_12:
+				openGui12(((Player) commander).getPlayer());
+				break;
+			case GOLD_BARDING:
+				openGui13(((Player) commander).getPlayer());
+				break;
+			case IRON_BARDING:
+				openGui14(((Player) commander).getPlayer());
+				break;
+			case DIAMOND_BARDING:
+				openGui15(((Player) commander).getPlayer());
+				break;
+			case SADDLE:
+				openGui16(((Player) commander).getPlayer());
+				break;
+			case CHAINMAIL_HELMET:
+				openGui17(((Player) commander).getPlayer());
+				break;
+			case CHAINMAIL_CHESTPLATE:
+				openGui18(((Player) commander).getPlayer());
+				break;
+			case CHAINMAIL_LEGGINGS:
+				openGui19(((Player) commander).getPlayer());
+				break;
+			case CHAINMAIL_BOOTS:
+				openGui20(((Player) commander).getPlayer());
+				break;
+			default:
+				commander.closeInventory();
+				break;
+		}
+	}
+	
+	
+	
+	private void openGui1(Player commander) {
+
+		Inventory inv2 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc 13"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv2.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv2.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv2.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv2.setItem(19, Coal4);
+		ItemStack Gold = new ItemStack(Material.GOLD_INGOT);
+		ItemMeta GoldMeta = Gold.getItemMeta();
+		GoldMeta.setDisplayName("Gold Ingot");
+		Gold.setItemMeta(GoldMeta);
+		inv2.setItem(20, Gold);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv2.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv2.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv2.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv2.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv2.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.GOLD_RECORD);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv2.setItem(24, Disc13);
+		commander.openInventory(inv2);
+	}
+	private void openGui2(Player commander) {
+
+		Inventory inv3 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc cat"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv3.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv3.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv3.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv3.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.SUGAR_CANE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Sugar Cane");
+		Sugar.setItemMeta(SugarMeta);
+		inv3.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv3.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv3.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv3.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv3.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv3.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.GREEN_RECORD);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv3.setItem(24, Disc13);
+		commander.openInventory(inv3);
+	}
+	private void openGui3(Player commander) {
+
+		Inventory inv4 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc blocks"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv4.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv4.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv4.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv4.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.BRICK);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Brick");
+		Sugar.setItemMeta(SugarMeta);
+		inv4.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv4.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv4.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv4.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv4.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv4.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_3);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv4.setItem(24, Disc13);
+		commander.openInventory(inv4);
+	}
+	private void openGui4(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc chirp"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.REDSTONE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Redstone");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_4);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui5(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc chirp"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.CACTUS);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Cactus");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_5);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui6(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc far"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.LAPIS_BLOCK);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Lapis Lazuli Block");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_6);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui7(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Disc mellohi"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.BED);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Bed");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_7);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui8(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc stal"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.FLINT);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Flint");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_8);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui9(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc strad"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.IRON_INGOT);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Iron Ingot");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_9);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui10(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc ward"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.MOSSY_COBBLESTONE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Moss Stone");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_10);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui11(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc 11"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.NETHER_BRICK);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Nether Brick");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_11);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui12(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Showing recipe for Disc wait"); 
+		
+		ItemStack Coal1 = new ItemStack(Material.COAL);
+		ItemMeta Coal1Meta = Coal1.getItemMeta();
+		Coal1Meta.setDisplayName("coal");
+		Coal1.setItemMeta(Coal1Meta);
+		inv5.setItem(10, Coal1);
+		ItemStack Coal2 = new ItemStack(Material.COAL);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("coal");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.COAL);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("coal");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.COAL);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("coal");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.ICE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Ice");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.COAL);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("coal");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.COAL);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("coal");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.COAL);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("coal");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.COAL);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("coal");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.RECORD_12);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Music Disc");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}
+	private void openGui13(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Gold Horse Armor"); 
+		
+		ItemStack Coal2 = new ItemStack(Material.GOLD_INGOT);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Gold Ingot");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.GOLD_INGOT);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Gold Ingot");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.GOLD_INGOT);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Gold Ingot");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.GOLD_INGOT);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Gold Ingot");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Leather");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.GOLD_INGOT);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("Gold Ingot");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("Leather");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("Leather");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.GOLD_BARDING);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Iron Horse Armor");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+		
+	}
+	private void openGui14(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Iron Horse Armor"); 
+		
+		ItemStack Coal2 = new ItemStack(Material.IRON_INGOT);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Iron Ingot");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.IRON_INGOT);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Iron Ingot");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.IRON_INGOT);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Iron Ingot");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.IRON_INGOT);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Iron Ingot");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Leather");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.IRON_INGOT);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("Iron Ingot");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("Leather");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("Leather");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.IRON_BARDING);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Iron Horse Armor");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+	private void openGui15(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Diamond Horse Armor"); 
+		
+		ItemStack Coal2 = new ItemStack(Material.DIAMOND);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Diamond");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.DIAMOND);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Diamond");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.DIAMOND);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Diamond");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.DIAMOND);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Diamond");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Leather");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.DIAMOND);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("Diamond");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("Leather");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("Leather");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.DIAMOND_BARDING);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Diamond Horse Armor");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+	private void openGui16(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Saddle"); 
+		
+		ItemStack Coal = new ItemStack(Material.LEATHER);
+		ItemMeta CoalMeta = Coal.getItemMeta();
+		CoalMeta.setDisplayName("Leather");
+		Coal.setItemMeta(CoalMeta);
+		inv5.setItem(10, Coal);
+		ItemStack Coal2 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Leather");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Leather");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Leather");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.LEATHER);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Leather");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Leather");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("Leather");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("Leather");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(29, Coal7);
+		ItemStack Coal8 = new ItemStack(Material.LEATHER);
+		ItemMeta Coal8Meta = Coal8.getItemMeta();
+		Coal8Meta.setDisplayName("Leather");
+		Coal8.setItemMeta(Coal8Meta);
+		inv5.setItem(30, Coal8);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.SADDLE);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Saddle");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+	private void openGui17(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Chain Helmet"); 
+		
+		ItemStack Coal = new ItemStack(Material.STONE);
+		ItemMeta CoalMeta = Coal.getItemMeta();
+		CoalMeta.setDisplayName("Stone");
+		Coal.setItemMeta(CoalMeta);
+		inv5.setItem(10, Coal);
+		ItemStack Coal2 = new ItemStack(Material.STONE);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Stone");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(11, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.STONE);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Stone");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.STONE);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Stone");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Coal5 = new ItemStack(Material.STONE);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Stone");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(21, Coal5);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.CHAINMAIL_HELMET);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Chain Helmet");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+	private void openGui18(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Chain Chestplate"); 
+		
+		ItemStack Coal2 = new ItemStack(Material.STONE);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Stone");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(12, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.STONE);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Stone");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(19, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.STONE);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Stone");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(20, Coal4);
+		ItemStack Sugar = new ItemStack(Material.STONE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Stone");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(21, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.STONE);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Stone");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(28, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.STONE);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("Stone");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(29, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.STONE);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("Stone");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(30, Coal7);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Chain Chestplate");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+	private void openGui19(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Chain Leggings"); 
+		
+		ItemStack Coal2 = new ItemStack(Material.STONE);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Stone");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(10, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.STONE);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Stone");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(11, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.STONE);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Stone");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(12, Coal4);
+		ItemStack Sugar = new ItemStack(Material.STONE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Stone");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(20, Sugar);
+		ItemStack Coal5 = new ItemStack(Material.STONE);
+		ItemMeta Coal5Meta = Coal5.getItemMeta();
+		Coal5Meta.setDisplayName("Stone");
+		Coal5.setItemMeta(Coal5Meta);
+		inv5.setItem(22, Coal5);
+		ItemStack Coal6 = new ItemStack(Material.STONE);
+		ItemMeta Coal6Meta = Coal6.getItemMeta();
+		Coal6Meta.setDisplayName("Stone");
+		Coal6.setItemMeta(Coal6Meta);
+		inv5.setItem(28, Coal6);
+		ItemStack Coal7 = new ItemStack(Material.STONE);
+		ItemMeta Coal7Meta = Coal7.getItemMeta();
+		Coal7Meta.setDisplayName("Stone");
+		Coal7.setItemMeta(Coal7Meta);
+		inv5.setItem(30, Coal7);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Chain Leggings");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+	private void openGui20(Player commander) {
+
+		Inventory inv5 = Bukkit.createInventory(null, 45, ChatColor.DARK_BLUE
+				+ "Recipe for Chain Boots"); 
+		
+		ItemStack Coal2 = new ItemStack(Material.STONE);
+		ItemMeta Coal2Meta = Coal2.getItemMeta();
+		Coal2Meta.setDisplayName("Stone");
+		Coal2.setItemMeta(Coal2Meta);
+		inv5.setItem(10, Coal2);
+		ItemStack Coal3 = new ItemStack(Material.STONE);
+		ItemMeta Coal3Meta = Coal3.getItemMeta();
+		Coal3Meta.setDisplayName("Stone");
+		Coal3.setItemMeta(Coal3Meta);
+		inv5.setItem(12, Coal3);
+		ItemStack Coal4 = new ItemStack(Material.STONE);
+		ItemMeta Coal4Meta = Coal4.getItemMeta();
+		Coal4Meta.setDisplayName("Stone");
+		Coal4.setItemMeta(Coal4Meta);
+		inv5.setItem(19, Coal4);
+		ItemStack Sugar = new ItemStack(Material.STONE);
+		ItemMeta SugarMeta = Sugar.getItemMeta();
+		SugarMeta.setDisplayName("Stone");
+		Sugar.setItemMeta(SugarMeta);
+		inv5.setItem(21, Sugar);
+		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
+		ItemMeta BackMeta = Back.getItemMeta();
+		BackMeta.setDisplayName(ChatColor.BLUE + "Go Back");
+		Back.setItemMeta(BackMeta);
+		inv5.setItem(44, Back);
+		ItemStack Disc13 = new ItemStack(Material.CHAINMAIL_BOOTS);
+		ItemMeta Disc13Meta = Disc13.getItemMeta();
+		Disc13Meta.setDisplayName(ChatColor.AQUA + "Chain Boots");
+		Disc13.setItemMeta(Disc13Meta);
+		inv5.setItem(24, Disc13);
+		commander.openInventory(inv5);
+	}	
+//Stopping at Saddle 
+//Haven't done On Inv click yet
+
+
+	@EventHandler
+	public void onInventoryClick1(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc 13"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case GOLD_RECORD:
+				
+				break;
+		}
+		}
+	@EventHandler
+	public void onInventoryClick2(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc cat"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+				break;
+			case GREEN_RECORD:
+				break;
+		}
+		}
+	@EventHandler
+	public void onInventoryClick3(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc chirp"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_3:
+				
+				break;
+		}
+		}
+	@EventHandler
+	public void onInventoryClick4(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc blocks"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_4:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick5(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc chirp"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_5:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick6(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc far"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_6:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick7(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Recipe for Disc mellohi"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_7:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick8(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc stal"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_8:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick9(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc strad"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_9:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick10(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc ward"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_10:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick11(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc 11"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_11:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick12(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Showing recipe for Disc wait"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case RECORD_12:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick13(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Recipe for Gold Horse Armor"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case GOLD_BARDING:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick14(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Recipe for Iron Horse Armor"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case IRON_BARDING:
+				
+				break;
+		}
+	}
+	@EventHandler
+	public void onInventoryClick15(InventoryClickEvent event) {
+		if (!ChatColor.stripColor(event.getInventory().getName())
+				.equalsIgnoreCase("Recipe for Diamond Horse Armor"))
+			return;
+		Player commander = (Player) event.getWhoClicked();
+		event.setCancelled(true);
+
+		if (event.getCurrentItem() == null
+				|| event.getCurrentItem().getType() == Material.AIR
+				|| !event.getCurrentItem().hasItemMeta())
+		{
+			commander.closeInventory();
+			return;
+		}
+		switch (event.getCurrentItem().getType())
+		{
+
+			case COAL:
+
+				break;
+			case REDSTONE_BLOCK:
+				openGUI(((Player) commander).getPlayer());
+				break;
+			default:
+	
+				break;
+			case DIAMOND_BARDING:
+				
+				break;
+		}
+	}
+
+	
+	public boolean onCommand(CommandSender sender, Command cmd,
+			String commandLabel, String[] args) {
+		if (args.length > 0)
+		{
+		
+		}
+		if (sender instanceof Player)
+		{
+			Player commander = (Player) sender;
+			if (commandLabel.equalsIgnoreCase("rec"))
+			{
+				if (args.length == 0)
+				{
+					commander.sendMessage(ChatColor.DARK_AQUA
+							+ "--------------" + ChatColor.GREEN
+							+ " Recipes Help " + ChatColor.DARK_AQUA
+							+ "--------------");
+					commander.sendMessage(ChatColor.DARK_AQUA + "/rec"
+							+ ChatColor.WHITE + " | " + ChatColor.GREEN
+							+ "Shows this screen.");
+					commander.sendMessage(ChatColor.DARK_AQUA + "/rec list"
+							+ ChatColor.WHITE + " | " + ChatColor.GREEN
+							+ "Shows the items you can craft.");
+					commander.sendMessage(ChatColor.DARK_AQUA
+							+ "/rec <Item name> " + ChatColor.WHITE + " | "
+							+ ChatColor.GREEN
+							+ "Will show you how to craft the item specified.");
+					commander.sendMessage(ChatColor.DARK_AQUA + "/rec info"
+							+ ChatColor.WHITE + " | " + ChatColor.GREEN
+							+ "Shows info about the author of this plugin!");
+					commander.sendMessage(ChatColor.DARK_AQUA
+							+ "--------------" + ChatColor.GREEN
+							+ " Recipes Help " + ChatColor.DARK_AQUA
+							+ "--------------");
+				}
+
+				else if (args[0].equalsIgnoreCase("list"))
+				{
+					openGUI(((Player) commander).getPlayer());
+				}
+				else if (args[0].equalsIgnoreCase("13"))
+				{
+					if (args.length == 1)
+					{
+						openGui1(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("cat"))
+				{
+					if (args.length == 1)
+					{
+						openGui2(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("blocks"))
+				{
+					if (args.length == 1)
+					{
+						openGui3(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("Chirp"))
+				{
+					openGui4(((Player) commander).getPlayer());
+				}
+				else if (args[0].equalsIgnoreCase("far"))
+				{
+					if (args.length == 1)
+					{
+						openGui5(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("mall"))
+				{
+					if (args.length == 1)
+					{
+						openGui6(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("mellohi"))
+				{
+					if (args.length == 1)
+					{
+						openGui7(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("stal"))
+				{
+					if (args.length == 1)
+					{
+						openGui8(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("strad"))
+				{
+					if (args.length == 1)
+					{
+						openGui9(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("ward"))
+				{
+					if (args.length == 1)
+					{
+						openGui10(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("11"))
+				{
+					if (args.length == 1)
+					{
+						openGui11(((Player) commander).getPlayer());
+					}
+				}
+				else if (args[0].equalsIgnoreCase("wait"))
+				{
+					if (args.length == 1)
+					{
+						openGui12(((Player) commander).getPlayer());
+
+					}
+				}
+				else if (args[0].equalsIgnoreCase("goldhorse"))
+				{
+					if (args.length == 1)
+					{
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ "  Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+						commander.sendMessage(ChatColor.DARK_PURPLE
+								+ "/rec goldhorse" + ChatColor.WHITE + " | "
+								+ ChatColor.GREEN + "Shows this screen.");
+						commander.sendMessage(ChatColor.BLUE
+								+ "You will need 5 gold ingots and 3 leather.");
+						commander.sendMessage(ChatColor.GOLD + " - G G ");
+						commander.sendMessage(ChatColor.GOLD + " G G L");
+						commander.sendMessage(ChatColor.GOLD + " G L L ");
+						commander.sendMessage(ChatColor.BLUE
+								+ "G = Gold Ingot, L = Leather");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+					}
+				}
+				else if (args[0].equalsIgnoreCase("ironhorse"))
+				{
+					if (args.length == 1)
+					{
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ "  Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+						commander.sendMessage(ChatColor.DARK_PURPLE
+								+ "/rec ironhorse" + ChatColor.WHITE + " | "
+								+ ChatColor.GREEN + "Shows this screen.");
+						commander.sendMessage(ChatColor.BLUE
+								+ "You will need 5 iron ingots and 3 leather.");
+						commander.sendMessage(ChatColor.GOLD + " - I I ");
+						commander.sendMessage(ChatColor.GOLD + " I I L");
+						commander.sendMessage(ChatColor.GOLD + " I L L ");
+						commander.sendMessage(ChatColor.BLUE
+								+ "I = Iron Ingot, L = Leather");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+					}
+				}
+				else if (args[0].equalsIgnoreCase("diamondhorse"))
+				{
+					if (args.length == 1)
+					{
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ "  Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+						commander.sendMessage(ChatColor.DARK_PURPLE
+								+ "/rec diamondhorse" + ChatColor.WHITE + " | "
+								+ ChatColor.GREEN + "Shows this screen.");
+						commander.sendMessage(ChatColor.BLUE
+								+ "You will need 5 Diamonds and 3 leather.");
+						commander.sendMessage(ChatColor.GOLD + " - D D ");
+						commander.sendMessage(ChatColor.GOLD + " D D L");
+						commander.sendMessage(ChatColor.GOLD + " D L L ");
+						commander.sendMessage(ChatColor.BLUE
+								+ "D = Diamond, L = Leather");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+					}
+				}
+				else if (args[0].equalsIgnoreCase("saddle"))
+				{
+					if (args.length == 1)
+					{
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ "  Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+						commander.sendMessage(ChatColor.DARK_PURPLE
+								+ "/rec saddle" + ChatColor.WHITE + " | "
+								+ ChatColor.GREEN + "Shows this screen.");
+						commander.sendMessage(ChatColor.BLUE
+								+ "You will need 9 Leather.");
+						commander.sendMessage(ChatColor.GOLD + " L L L ");
+						commander.sendMessage(ChatColor.GOLD + " L L L ");
+						commander.sendMessage(ChatColor.GOLD + " L L L ");
+						commander.sendMessage(ChatColor.BLUE + " L = Leather");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+					}
+				}
+				else if (args[0].equalsIgnoreCase("info"))
+				{
+					if (args.length == 1)
+					{
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ "  Recipes Info " + ChatColor.DARK_AQUA
+								+ "--------------");
+						commander.sendMessage(ChatColor.DARK_PURPLE
+								+ "/rec info" + ChatColor.WHITE + " | "
+								+ ChatColor.GREEN + "Shows this screen.");
+						commander.sendMessage(ChatColor.RED
+								+ "Plugin created by mcnmr.");
+						commander
+								.sendMessage(ChatColor.DARK_AQUA
+										+ " This plugin orginally only had a few features until I decided to expand on it. ");
+						commander
+								.sendMessage(ChatColor.DARK_AQUA
+										+ "You can suggest features to me on the my server.");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Info " + ChatColor.DARK_AQUA
+								+ "--------------");
+
+					}
+				}
+				else if (args[0].equalsIgnoreCase("help"))
+				{
+					if (args.length == 1)
+					{
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+						commander.sendMessage(ChatColor.DARK_AQUA + "/rec help"
+								+ ChatColor.WHITE + " | " + ChatColor.GREEN
+								+ "Shows this screen.");
+						commander.sendMessage(ChatColor.DARK_AQUA + "/rec list"
+								+ ChatColor.WHITE + " | " + ChatColor.GREEN
+								+ "Shows the items you can craft.");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "/rec <Item name> " + ChatColor.WHITE + " | "
+								+ ChatColor.GREEN
+								+ "Will show you how to craft the item specified.");
+						commander.sendMessage(ChatColor.DARK_AQUA + "/rec info"
+								+ ChatColor.WHITE + " | " + ChatColor.GREEN
+								+ "Shows info about the author of this plugin!");
+						commander.sendMessage(ChatColor.DARK_AQUA
+								+ "--------------" + ChatColor.GREEN
+								+ " Recipes Help " + ChatColor.DARK_AQUA
+								+ "--------------");
+					}
+				}
+				else {
+					commander.sendMessage(ChatColor.DARK_RED + "Unknown command please type /rec help for a list of commands!");
+				}
+					
+			}
+		}
+		return false;
+	}
+}
+
